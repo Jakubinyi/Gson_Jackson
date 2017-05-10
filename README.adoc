@@ -1,0 +1,49 @@
+= Steps
+
+. `mkdir <project-dir>`
+. `cd <project-dir>`
+. `mkdir lib`
+. Download JSON processing library dependencies and put them into the `lib` folder.
+.. http://central.maven.org/maven2/com/fasterxml/jackson/core/[`com.fasterxml.jackson`]
+... `jackson-core-2.8.8.jar`
+... `jackson-annotations-2.8.8.jar`
+... `jackson-databind-2.8.8.jar`
+.. http://central.maven.org/maven2/com/google/code/gson/[`com.google.gson`]
+... `gson-2.8.0.jar`
+.. http://central.maven.org/maven2/org/glassfish/[`javax.json`]
+... `javax.json-1.0.4.jar`
+.. http://central.maven.org/maven2/org/json/[`org.json`]
+... `json-20160810.jar`
+. Choose a JSON library from the above list and download its related JARs.
+.. _Start with Jackson or Gson_, because `javax.json` and `org.json` doesn't support direct _object serialization/deserialization_.
+. Import the JARs as dependencies in your IDE project.
+. Create a `Message` class.
+.. It has an `id` field of type `Integer`
+.. and a `text` field of type `String`.
+.. Implement `toString`.
+. Create a `Main` class with a `main` method which works as follows:
+.. Deserializes the contents of `single.json` into a `Message` instance.
++
+.single.json
+----
+{
+	"id": 123,
+	"text": "message123"
+}
+----
+.. Prints out the `Message` instance to `stdout`.
+.. Serialalizes the `Message` object to a file called `output-single.json`.
+.. After this it should deserialize the contents of `multiple.json` into a `List<Message>`.
++
+.multiple.json
+----
+[
+	{"id": 234, "text": "message234"},
+	{"id": 345, "text": "message345"},
+	{"id": 456, "text": "message456"},
+]
+----
+.. Prints out the `List<Message>` to `stdout`.
+.. Serialalizes the `List<Message>` object to a file called `output-multiple.json`.
+. Try to use multiple JSON libraries from the above list.
+. *Try to use InputStream and OutputStream objects and their sub-classes*.
